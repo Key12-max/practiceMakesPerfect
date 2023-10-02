@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import axios from 'axios';
-const PersonForm = () => {
+const PersonForm = (props) => {
+    const {people, setPeople} = props;
     const[message, setMessage ] = useState("Loading...")
     //keep track of what is being typed via useState hook
     const [firstName, setFirstName] = useState("");
@@ -14,6 +15,9 @@ const PersonForm = () => {
             .then(res=>{
                 console.log(res);
                 console.log(res.data);
+                // we will update the lifted state of our people array 
+                //    to include the current value in state plus the single 
+                setPeople([...people, res.data])
             })
             .catch(err=>console.log(err))
     }

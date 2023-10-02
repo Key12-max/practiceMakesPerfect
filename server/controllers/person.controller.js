@@ -9,7 +9,7 @@ module.exports.index = (request,response) => {
 module.exports.createPerson = (request, response)=>{
 
     Person.create(request.body)
-        .then(person = response.json(person))
+        .then(person => response.json(person))
         .catch(err =>response.json(err));
 }
 module.exports.getAllPeople = (request, response) => {
